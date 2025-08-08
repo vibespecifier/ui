@@ -6,19 +6,20 @@
   "engines": {
     "node": ">=22"
   },
-  "private": true,
   "scripts": {
     "postinstall": "vite build",
     "format": "prettier --write .",
     "review": "prettier --check . && oxlint && vitest run",
     "test": "vitest",
-    "build": "vite build && dts-bundle-generator src/index.ts"
+    "build": "vite build",
+    "publish": "cd out && npm publish && cd .."
   },
   "dependencies": {
     "react": ">=19",
     "react-dom": ">=19"
   },
   "devDependencies": {
+    "@microsoft/api-extractor": "^7.52.10",
     "@types/node": "^24.2.0",
     "@types/react": "^19.1.9",
     "@types/react-dom": "^19.1.7",
@@ -29,6 +30,7 @@
     "prettier-plugin-sh": "^0.18.0",
     "typescript": "^5",
     "typescript-plugin-css-modules": "^5.2.0",
+    "unplugin-dts": "1.0.0-beta.6",
     "vite": "^7.1.1",
     "vitest": "^3.2.4"
   }
