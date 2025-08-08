@@ -1,0 +1,9 @@
+Desktop.ini
+.DS_Store
+.idea
+*.iml
+*.ipr
+*.iws
+
+# Node.
+node_modules
