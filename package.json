@@ -6,13 +6,13 @@
   "engines": {
     "node": ">=22"
   },
-  "private": true,
   "scripts": {
     "postinstall": "vite build",
     "format": "prettier --write .",
     "review": "prettier --check . && oxlint && vitest run",
     "test": "vitest",
-    "build": "vite build && dts-bundle-generator src/index.ts"
+    "build": "vite build",
+    "publish": "cd out && npm publish && cd .."
   },
   "dependencies": {
     "react": ">=19",
