@@ -14,7 +14,7 @@
     "test": "vitest",
     "build": "vite build",
     "publish": "cd out && npm publish && cd ..",
-    "build-storybook": "storybook build"
+    "storybook-build": "storybook build"
   },
   "dependencies": {
     "react": ">=19",
