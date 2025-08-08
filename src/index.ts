@@ -1,1 +1,1 @@
-export function placeholder() {}
+export { default as Placeholder } from "./components/placeholder"
