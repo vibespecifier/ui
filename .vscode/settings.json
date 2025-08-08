@@ -14,7 +14,7 @@
 
   // File nesting patterns (enable as you need).
   "explorer.fileNesting.patterns": {
-    "*.tsx": "${capture}.module.css, ${capture}.test.ts",
+    "*.tsx": "${capture}.module.css, ${capture}.stories.ts, ${capture}.test.ts",
     "*.js": ""
   },
 
@@ -24,6 +24,12 @@
   "[css]": { "editor.wordWrap": "wordWrapColumn" },
 
   // Code spell checker (require recommended extension).
-  "cSpell.ignorePaths": [".git", "node_modules", "out", "pnpm-lock.yaml"],
-  "cSpell.words": ["esbenp", "oxlint", "unplugin"]
+  "cSpell.ignorePaths": [
+    ".git",
+    "node_modules",
+    "out",
+    "storybook-static",
+    "pnpm-lock.yaml"
+  ],
+  "cSpell.words": ["autodocs", "esbenp", "oxlint", "unplugin"]
 }
