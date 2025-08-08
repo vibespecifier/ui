@@ -8,3 +8,7 @@ Desktop.ini
 # Node.
 node_modules
 out
+
+# Storybook.
+*storybook.log
+storybook-static

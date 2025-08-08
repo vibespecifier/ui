@@ -4,30 +4,41 @@
   "type": "module",
   "packageManager": "pnpm@10.0.0",
   "engines": {
-    "node": ">=22"
+    "node": ">=24"
   },
   "scripts": {
     "postinstall": "vite build",
     "format": "prettier --write .",
     "review": "prettier --check . && oxlint && vitest run",
+    "dev": "storybook dev -p 6006",
     "test": "vitest",
     "build": "vite build",
-    "publish": "cd out && npm publish && cd .."
+    "publish": "cd out && npm publish && cd ..",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "react": ">=19",
     "react-dom": ">=19"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^4.1.0",
+    "@storybook/addon-a11y": "^9",
+    "@storybook/addon-docs": "^9",
+    "@storybook/addon-vitest": "^9",
     "@microsoft/api-extractor": "^7.52.10",
-    "@types/node": "^24.2.0",
+    "@storybook/react-vite": "^9",
+    "@types/node": "^24",
     "@types/react": "^19.1.9",
     "@types/react-dom": "^19.1.7",
+    "@vitest/browser": "3.2.4",
+    "@vitest/coverage-v8": "3.2.4",
     "@vitejs/plugin-react": "^5.0.0",
     "dts-bundle-generator": "^9.5.1",
     "oxlint": "^1.11.0",
+    "playwright": "^1.54.2",
     "prettier": "^3.6.2",
     "prettier-plugin-sh": "^0.18.0",
+    "storybook": "^9",
     "typescript": "^5",
     "typescript-plugin-css-modules": "^5.2.0",
     "unplugin-dts": "1.0.0-beta.6",
