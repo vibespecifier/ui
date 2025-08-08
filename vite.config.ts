@@ -1,6 +1,7 @@
 import react from "@vitejs/plugin-react"
 import { readFileSync, writeFileSync } from "node:fs"
 import { join } from "node:path"
+import dts from "unplugin-dts/vite"
 import { defineConfig, Plugin } from "vite"
 
 /**
@@ -14,18 +15,20 @@ import { defineConfig, Plugin } from "vite"
  * @returns a vite plugin.
  */
 function manifest(options?: {
-  root?: string
-  outDir?: string
+  source?: string
   overrides?: Record<string, unknown>
 }): Plugin {
+  const source = options?.source || join(import.meta.dirname, "package.json")
+  let outdir: string
+
   return {
     name: "manifest",
+    configResolved(config) {
+      outdir = config.build.outDir
+    },
     closeBundle(error) {
       if (error) throw error
-      const root = options?.root || import.meta.dirname
-      const outDir = options?.outDir || join(root, "out")
-      const filename = "package.json"
-      const manifest = JSON.parse(readFileSync(join(root, filename)).toString())
+      const manifest = JSON.parse(readFileSync(source).toString())
       manifest.engines = undefined
       manifest.packageManager = undefined
       manifest.scripts = undefined
@@ -33,27 +36,35 @@ function manifest(options?: {
       for (const key of Object.keys(options?.overrides ?? {})) {
         manifest[key] = options?.overrides?.[key]
       }
-      writeFileSync(join(outDir, filename), JSON.stringify(manifest))
+      writeFileSync(join(outdir, "package.json"), JSON.stringify(manifest))
     },
   }
 }
 
-// Global data.
 const root = import.meta.dirname
-const outDir = join(root, "out")
+const outdir = join(root, "out")
 const filename = "index"
-const exports = {
-  ".": { import: `./${filename}.js`, require: `./${filename}.umd.cjs` },
-  [`./${filename}.css`]: `./${filename}.css`,
-}
 
 export default defineConfig({
-  plugins: [react(), manifest({ root, outDir, overrides: { exports } })],
+  plugins: [
+    react(),
+    dts({ bundleTypes: true }),
+    manifest({
+      source: join(root, "package.json"),
+      overrides: {
+        exports: {
+          ".": { import: `./${filename}.js`, require: `./${filename}.umd.cjs` },
+          [`./${filename}.css`]: `./${filename}.css`,
+        },
+      },
+    }),
+  ],
   resolve: {
+    alias: { "@": join(root, "src") },
     external: ["react", "react-dom"],
   },
   build: {
-    outDir,
+    outDir: outdir,
     emptyOutDir: true,
     lib: { entry: "src/index.ts", name: "VibeSpecifierUI", fileName: filename },
     rollupOptions: {
