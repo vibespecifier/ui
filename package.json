@@ -5,11 +5,23 @@
   "type": "module",
   "scripts": {
     "format": "prettier --write .",
-    "review": "prettier --check . && oxlint"
+    "review": "prettier --check . && oxlint",
+    "review:compile": "tsc --noEmit",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
   },
   "devDependencies": {
+    "@types/node": "^24.3.1",
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react-swc": "^4.0.1",
     "oxlint": "^1.14.0",
     "prettier": "^3.6.2",
-    "prettier-plugin-sh": "^0.18.0"
+    "prettier-plugin-sh": "^0.18.0",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.4"
   }
 }
