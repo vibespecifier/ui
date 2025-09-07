@@ -9,6 +9,7 @@ export default defineConfig({
   resolve: {
     alias: { "@components": join(root, "components") },
   },
+  css: { modules: { generateScopedName: "[hash:8]" } },
   build: {
     outDir: join(root, "out"),
     emptyOutDir: true,

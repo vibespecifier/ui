@@ -3,6 +3,14 @@
   "description": "Shared UI components designed for the VibeSpecifier project.",
   "version": "0.0.0",
   "type": "module",
+  "exports": {
+    ".": {
+      "require": "./out/index.cjs",
+      "import": "./out/index.js",
+      "types": "./out/index.d.ts"
+    },
+    "./styles.css": "./out/ui.css"
+  },
   "scripts": {
     "format": "prettier --write .",
     "review": "prettier --check . && oxlint",
@@ -21,7 +29,9 @@
     "oxlint": "^1.14.0",
     "prettier": "^3.6.2",
     "prettier-plugin-sh": "^0.18.0",
+    "sass": "^1.92.1",
     "typescript": "^5.9.2",
+    "typescript-plugin-css-modules": "^5.2.0",
     "vite": "^7.1.4"
   }
 }

@@ -15,7 +15,7 @@
   "explorer.fileNesting.patterns": {
     "tsconfig.json": "tsconfig.*.json, tsconfig.tsbuildinfo",
     "package.json": "pnpm-lock.yaml",
-    "readme.md": "license"
+    "readme.md": "license, contributing.md"
   },
 
   // Support ts plugin including css modules.
