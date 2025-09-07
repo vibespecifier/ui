@@ -1,15 +1,38 @@
-import react from "@vitejs/plugin-react-swc"
-import { join } from "node:path"
-import { defineConfig } from "vite"
+/// <reference types="vitest/config" />
 
-const root = import.meta.dirname
+import { storybookTest } from "@storybook/addon-vitest/vitest-plugin"
+import react from "@vitejs/plugin-react-swc"
+import { dirname, join } from "node:path"
+import { fileURLToPath } from "node:url"
+import { defineConfig } from "vite"
+import { defineProject } from "vitest/config"
+
+const root =
+  typeof __dirname !== "undefined"
+    ? __dirname
+    : dirname(fileURLToPath(import.meta.url))
+
+const storybookTestProject = defineProject({
+  plugins: [storybookTest({ configDir: join(root, ".storybook") })],
+  test: {
+    name: "storybook",
+    browser: {
+      enabled: true,
+      headless: true,
+      provider: "playwright",
+      instances: [{ browser: "chromium" }],
+    },
+    setupFiles: [".storybook/vitest.setup.ts"],
+  },
+})
 
 export default defineConfig({
   plugins: [react()],
+  test: { projects: [{ extends: true, ...storybookTestProject }] },
+  css: { modules: { generateScopedName: "[hash:8]" } },
   resolve: {
     alias: { "@components": join(root, "components") },
   },
-  css: { modules: { generateScopedName: "[hash:8]" } },
   build: {
     outDir: join(root, "out"),
     emptyOutDir: true,

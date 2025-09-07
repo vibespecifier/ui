@@ -13,6 +13,9 @@
   // "explorer.fileNesting.enabled": true,
   // "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
+    "*.tsx": "${capture}.module.scss,${capture}.stories.tsx,${capture}.test.ts",
+    "*.module.scss": "${capture}.stories.tsx",
+    "vite.config.ts": "vitest.shims.d.ts",
     "tsconfig.json": "tsconfig.*.json, tsconfig.tsbuildinfo",
     "package.json": "pnpm-lock.yaml",
     "readme.md": "license, contributing.md"
@@ -29,5 +32,12 @@
 
   // Code spell checker (require recommended extensions).
   "cSpell.ignorePaths": ["node_modules", "pnpm-lock.yaml"],
-  "cSpell.words": ["esbenp", "esbuild", "oxlint", "vibespecifier", "vite"]
+  "cSpell.words": [
+    "esbenp",
+    "esbuild",
+    "oxlint",
+    "vibespecifier",
+    "vite",
+    "vitest"
+  ]
 }

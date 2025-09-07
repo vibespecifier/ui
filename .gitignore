@@ -10,3 +10,7 @@ Desktop.ini
 node_modules
 out
 tsconfig.tsbuildinfo
+
+# Storybook.
+*storybook.log
+storybook-static
