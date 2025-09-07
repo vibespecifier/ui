@@ -1,4 +1,4 @@
-import AdaptiveTheme, { type ThemeMode } from "@components/adaptive-theme"
+import { AdaptiveTheme, type ThemeMode } from "@components/adaptive-theme"
 import type { Meta, StoryObj } from "@storybook/react-vite"
 
 const meta: Meta<typeof AdaptiveTheme> = {

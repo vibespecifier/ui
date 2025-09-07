@@ -9,7 +9,7 @@ const darkMediaQuery = "(prefers-color-scheme: dark)"
 
 export type ThemeMode = "system" | "light" | "dark"
 
-export default function AdaptiveTheme({
+export function AdaptiveTheme({
   mode = "system",
   queryID = "theme",
   darkClass = "dark",

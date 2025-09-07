@@ -36,9 +36,14 @@ export default defineConfig({
   build: {
     outDir: join(root, "out"),
     emptyOutDir: true,
+    rollupOptions: {
+      external: ["react", "react-dom"],
+      output: { globals: { react: "React", "react-dom": "ReactDOM" } },
+    },
     lib: {
       name: "VibeSpecifierUI",
-      entry: join(root, "index.tsx"),
+      fileName: "ui",
+      entry: join(root, "index.ts"),
       formats: ["es", "umd"],
     },
   },

@@ -1,5 +1,6 @@
 {
   "rules": {
-    "no-console": "warn"
+    "no-console": "warn",
+    "typescript/triple-slash-reference": "off"
   }
 }
