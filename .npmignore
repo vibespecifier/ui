@@ -1,0 +1,23 @@
+.github
+.storybook
+.vscode
+.gitattributes
+.gitignore
+.oxlintrc.json
+.prettierignore
+.prettierrc.yaml
+
+# Source.
+/components
+env.d.ts
+index.ts
+
+# Configurations.
+pnpm-workspace.yaml
+tsconfig.json
+tsconfig.*.json
+vite.config.ts
+vitest.shims.d.ts
+
+# Communities.
+contributing.md

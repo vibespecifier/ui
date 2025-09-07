@@ -36,6 +36,7 @@
     "esbenp",
     "esbuild",
     "oxlint",
+    "oxlintrc",
     "vibespecifier",
     "vite",
     "vitest"
