@@ -1,0 +1,10 @@
+.themeAdapter {
+  background-color: var(--background);
+  color: var(--foreground);
+
+  $animation-duration: 265ms;
+  transition:
+    opacity ease-in-out $animation-duration,
+    background-color ease-in-out $animation-duration,
+    color ease-in-out $animation-duration;
+}
